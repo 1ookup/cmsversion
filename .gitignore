@@ -1,0 +1,4 @@
+/files/*
+.DS_Store
+/.idea/*
+/cms_version.db
