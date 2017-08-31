@@ -33,4 +33,19 @@ class BaseCMS
   def getNewVersion()
 
   end
+
+  def downloadFile(url, version)
+    filename = Digest::MD5.hexdigest(version).upcase + ".zip"
+    filepath = "files/" + self.class.to_s + "/"
+    unless Dir.exist?(filepath)
+      FileUtils.mkdir_p(filepath)
+    end
+    # resp = HTTP.follow.get(url)
+    # File.open(filepath + filename, 'w') do |f|
+    #   f.write(resp.body)
+    # end
+    `wget #{url} -O #{filepath + filename}`
+
+    self.setCurrentVersion(version, filepath + filename)
+  end
 end

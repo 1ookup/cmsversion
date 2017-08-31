@@ -15,12 +15,16 @@ require 'libs/base_cms'
 require 'libs/github_cms'
 require 'plugins/word_press'
 require 'plugins/joomla'
+require 'plugins/cms_easy'
 
 ActiveRecord::Base.establish_connection(:adapter => "sqlite3", :database  => "cms_version.db")
 
 
-joomla = Joomla.new
-joomla.getNewVersion
+# joomla = Joomla.new
+# joomla.getNewVersion
 
-wp = WordPress.new
-wp.getNewVersion
+# wp = WordPress.new
+# wp.getNewVersion
+
+ce = CmsEasy.new
+ce.getNewVersion

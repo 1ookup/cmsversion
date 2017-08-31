@@ -3,7 +3,6 @@ class GithubCms < BaseCMS
     tags_url = "https://api.github.com/repos/#{owner}/#{repo}/git/refs/tags"
     resp = HTTP.get(tags_url)
     resp = JSON.parse(resp.body)
-    down = false
     resp.each do |item|
       #ap item
       version = item["ref"][10..-1]
@@ -13,20 +12,5 @@ class GithubCms < BaseCMS
       downloadFile(download_url, version)
       sleep 0.1
     end
-  end
-
-  def downloadFile(url, version)
-    filename = Digest::MD5.hexdigest(version).upcase + ".zip"
-    filepath = "files/" + self.class.to_s + "/"
-    unless Dir.exist?(filepath)
-      FileUtils.mkdir_p(filepath)
-    end
-    # resp = HTTP.follow.get(url)
-    # File.open(filepath + filename, 'w') do |f|
-    #   f.write(resp.body)
-    # end
-    `wget #{url} -O #{filepath + filename}`
-
-    self.setCurrentVersion(version, filepath + filename)
   end
 end
