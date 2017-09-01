@@ -16,6 +16,7 @@ require 'libs/github_cms'
 require 'plugins/word_press'
 require 'plugins/joomla'
 require 'plugins/cms_easy'
+require 'plugins/open_sns'
 
 ActiveRecord::Base.establish_connection(:adapter => "sqlite3", :database  => "cms_version.db")
 
@@ -26,5 +27,8 @@ ActiveRecord::Base.establish_connection(:adapter => "sqlite3", :database  => "cm
 # wp = WordPress.new
 # wp.getNewVersion
 
-ce = CmsEasy.new
-ce.getNewVersion
+#ce = CmsEasy.new
+#ce.getNewVersion
+
+opensns = OpenSNS.new
+opensns.getNewVersion
