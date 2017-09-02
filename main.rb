@@ -17,6 +17,7 @@ require 'plugins/word_press'
 require 'plugins/joomla'
 require 'plugins/cms_easy'
 require 'plugins/open_sns'
+require 'plugins/drupal'
 
 ActiveRecord::Base.establish_connection(:adapter => "sqlite3", :database  => "cms_version.db")
 
@@ -30,5 +31,8 @@ ActiveRecord::Base.establish_connection(:adapter => "sqlite3", :database  => "cm
 #ce = CmsEasy.new
 #ce.getNewVersion
 
-opensns = OpenSNS.new
-opensns.getNewVersion
+#opensns = OpenSNS.new
+#opensns.getNewVersion
+
+drupal = Drupal.new
+drupal.getNewVersion
