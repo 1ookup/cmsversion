@@ -18,6 +18,7 @@ require 'plugins/joomla'
 require 'plugins/cms_easy'
 require 'plugins/open_sns'
 require 'plugins/drupal'
+require 'plugins/metinfo'
 
 ActiveRecord::Base.establish_connection(:adapter => "sqlite3", :database  => "cms_version.db")
 
@@ -34,5 +35,8 @@ ActiveRecord::Base.establish_connection(:adapter => "sqlite3", :database  => "cm
 #opensns = OpenSNS.new
 #opensns.getNewVersion
 
-drupal = Drupal.new
-drupal.getNewVersion
+# drupal = Drupal.new
+# drupal.getNewVersion
+
+metinfo = Metinfo.new
+metinfo.getNewVersion
